@@ -1,0 +1,2 @@
+
+1.req.body.account  获取表单提交的account参数
