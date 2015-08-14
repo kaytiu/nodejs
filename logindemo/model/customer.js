@@ -1,4 +1,54 @@
-var db=new ConnectDB();
+var MyDB  = require('./MyDB').MyDB,
+co = require('co'),
+thunkify = require('thunkify');
+
+//mydb.query('select * from oc_customer',testcallback);
+function testcallback(result){
+	if(result == mydb.errorCode){
+		console.log('select error....');
+	}
+	console.log(result);
+}
+
+function Customer(){
+	var mydb = new MyDB();
+	this.getCustomer = function(customer_id){
+		
+
+		var test = thunkify(mydb.query);
+		
+		co(function(){
+		     var p1=yield test('select * from oc_customer where customer_id=\''+customer_id+'\'');
+		     console.log(p1+":"+p2);
+		})();
+		
+		console.log('done..........');
+		
+		
+		return;
+//		var tmpresut;
+		mydb.query('select * from oc_customer where customer_id=\''+customer_id+'\'',function(result){
+			tmpresut = result;
+			console.log('callback...');
+		});
+//		console.log('done...');
+		
+	}
+}
+
+exports.Customer = Customer;
+
+var testcustomer = new Customer();
+var test = testcustomer.getCustomer('15');
+console.log(test);
+
+ 
+/*
+var mydb = new MyDB();
+mydb.query('select * from oc_customer',testcallback);
+
+
+
 function Customer(){
 	this.getCustomer=function(){
 		db.query('select * from oc_customer where customer_id=\'1\'');
@@ -10,6 +60,7 @@ Customer.getCustomer();
 
 
 console.log('require done ....');
+*/
 
 //var Customer = sequelize.define('oc_customer', {
 //	customerId:{type:Sequelize.INTEGER,field:'customer_id'},
