@@ -1,0 +1,3 @@
+1.依懒：　express,　body-parser, ejs, mongoose 
+2. 先运行 cart_init.js, 初始化数据
+3. 再运行cart_server.js
