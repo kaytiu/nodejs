@@ -1,0 +1,18 @@
+{
+  "name": "comprame",
+  "version": "1.0.0",
+  
+  "description": "comprame nodejs version",  
+  "author": {
+    "name": "kwankwan<款款>",
+    "email": "kaytiu@163.com"
+  },
+  "dependencies": {
+    "express":"4.13.2",
+    "body-parser":"1.14.0",
+    "less":"lasted",    
+    "ejs":"lasted"
+  },
+  
+  "main": "./app.js"
+}
